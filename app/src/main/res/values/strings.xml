@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">QLBanHang</string>
+    <string name="overview">Tổng quan</string>
+    <string name="order">Đơn hàng</string>
+    <string name="product">Sản phẩm</string>
+    <string name="more">Thêm</string>
+    <string name="list_order">Danh sách đơn hàng</string>
+    <string name="list_product">Danh sách sản phẩm</string>
+</resources>
