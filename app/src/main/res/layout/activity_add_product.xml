@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.product.AddProductActivity"
     android:orientation="vertical"
-    android:layout_marginLeft="12dp"
-    android:layout_marginRight="12dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     >
     <ImageView
         android:layout_width="100dp"
@@ -17,6 +17,7 @@
         android:layout_marginTop="8dp"
         android:src="@drawable/ic_upload_image"
         android:id="@+id/imgProduct"/>
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Loại sản phẩm"
+            android:text=" Loại sản phẩm"
             android:textSize="16sp"/>
         <Spinner
             android:layout_width="match_parent"
@@ -50,12 +51,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Loại sản phẩm"
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/txtOtherType"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mô tả"
+        android:text=" Mô tả"
         android:textSize="14sp"
         android:layout_marginTop="10dp"/>
     <EditText
