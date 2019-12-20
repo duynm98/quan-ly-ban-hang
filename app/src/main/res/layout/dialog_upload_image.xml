@@ -6,11 +6,11 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tải lên ảnh sản phẩm "
+        android:text="Tải lên ảnh sản phẩm                  "
         android:textSize="25sp"
         android:textColor="#0a0a0a"/>
     <Button
-        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Chụp ảnh"
@@ -18,7 +18,7 @@
         android:gravity="center_vertical"
         android:id="@+id/btnTakePhoto"/>
     <Button
-        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Chọn ảnh từ thiết bị"
