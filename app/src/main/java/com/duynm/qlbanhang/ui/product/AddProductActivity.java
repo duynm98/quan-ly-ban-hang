@@ -33,7 +33,7 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void addControls() {
-        imgProduct=(ImageView) findViewById(R.id.imgProduct);
+        imgProduct=(ImageView) findViewById(R.id.imgAddProduct);
     }
 
     private void addEvents() {

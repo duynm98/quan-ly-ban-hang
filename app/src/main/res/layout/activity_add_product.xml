@@ -10,26 +10,27 @@
     android:layout_marginRight="10dp"
     >
     <ImageView
+        android:id="@+id/imgAddProduct"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:src="@drawable/ic_upload_image"
-        android:id="@+id/imgProduct"/>
+        android:src="@drawable/ic_upload_image"/>
 
     <EditText
+        android:id="@+id/txtAddName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:hint="Tên Sản phẩm"
-        android:id="@+id/txtName"/>
+        android:hint="Tên Sản phẩm"/>
+
     <EditText
+        android:id="@+id/txtAddPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Giá thành"
-        android:layout_marginTop="5dp"
-        android:id="@+id/txtPrice" />
+        android:layout_marginTop="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,48 +43,48 @@
             android:text=" Loại sản phẩm"
             android:textSize="16sp"/>
         <Spinner
+            android:id="@+id/spinnerAddType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"/>
     </LinearLayout>
 
     <EditText
+        android:id="@+id/txtAddOtherType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Loại sản phẩm"
-        android:visibility="gone"
-        android:id="@+id/txtOtherType"/>
+        android:visibility="gone"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=" Mô tả"
         android:textSize="14sp"
         android:layout_marginTop="10dp"/>
+
     <EditText
+        android:id="@+id/txtAddDescription"
         android:layout_marginTop="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:height="150dp"
-        android:background="@drawable/design_description"
+        android:background="@drawable/background_description"
         android:textSize="16sp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:scrollbars="vertical"
-        android:paddingVertical="0dp"
-        android:id="@+id/txtDescription"/>
+        android:paddingVertical="0dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>
     <Button
+        android:id="@+id/btnAddProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Thêm"
-        android:layout_marginBottom="16dp"
-        android:id="@+id/btnAddProduct"/>
-
-
-
-
+        android:layout_marginBottom="16dp" />
 
 </LinearLayout>

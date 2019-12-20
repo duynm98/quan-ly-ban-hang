@@ -1,4 +1,4 @@
-package com.duynm.qlbanhang.ui.detailproduct;
+package com.duynm.qlbanhang.ui.product;
 
 import androidx.appcompat.app.AppCompatActivity;
 
