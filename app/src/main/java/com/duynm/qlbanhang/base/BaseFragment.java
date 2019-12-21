@@ -26,13 +26,17 @@ public abstract class BaseFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        initViewComponent();
         initUI();
+    }
+
+    protected void initViewComponent() {
+    }
+
+    protected void initUI() {
     }
 
     protected boolean isSafe() {
         return !(this.isRemoving() || this.getActivity() == null || this.isDetached() || !this.isAdded() || this.getView() == null);
-    }
-
-    protected void initUI() {
     }
 }
