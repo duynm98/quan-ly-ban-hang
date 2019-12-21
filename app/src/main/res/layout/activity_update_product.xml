@@ -4,48 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.product.UpdateProductActivity"
-    android:orientation="vertical"
     android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:layout_marginRight="10dp"
+    android:orientation="vertical"
+    tools:context=".ui.updateproduct.UpdateProductActivity">
+
     <ImageView
         android:id="@+id/imgUpdateProduct"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:scaleType="centerCrop"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:src="@drawable/a"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/a" />
 
     <EditText
         android:id="@+id/txtUpdateName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
-        android:text="Sản phẩm một"/>
+        android:text="Sản phẩm một" />
 
     <EditText
         android:id="@+id/txtUpdatePrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="39000"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:inputType="number"
+        android:text="39000" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Loại sản phẩm"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
+
         <Spinner
             android:id="@+id/spinnerUpdateType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"/>
+            android:layout_marginLeft="15dp" />
     </LinearLayout>
 
     <EditText
@@ -53,36 +57,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Loại sản phẩm"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text=" Mô tả"
-        android:textSize="14sp"
-        android:layout_marginTop="10dp"/>
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/txtUpdateDescription"
-        android:layout_marginTop="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
         android:height="150dp"
         android:background="@drawable/background_description"
-        android:textSize="16sp"
+        android:paddingVertical="0dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:scrollbars="vertical"
-        android:paddingVertical="0dp"/>
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
+
     <Button
         android:id="@+id/btnUpdateProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Thay đổi"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:text="Thay đổi" />
 </LinearLayout>

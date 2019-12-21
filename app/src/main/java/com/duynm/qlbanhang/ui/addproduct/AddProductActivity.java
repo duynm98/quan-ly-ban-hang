@@ -1,4 +1,4 @@
-package com.duynm.qlbanhang.ui.product;
+package com.duynm.qlbanhang.ui.addproduct;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -79,8 +79,9 @@ public class AddProductActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode == RESULT_OK){
-            if(requestCode == REQUEST_CHOOSE_PHOTO){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_CHOOSE_PHOTO) {
                 try {
                     Uri imageUri = data.getData();
                     InputStream is = getContentResolver().openInputStream(imageUri);
@@ -89,7 +90,7 @@ public class AddProductActivity extends AppCompatActivity {
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
-            }else if(requestCode == RESQUEST_TAKE_PHOTO){
+            } else if (requestCode == RESQUEST_TAKE_PHOTO) {
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                 imgProduct.setImageBitmap(bitmap);
             }
