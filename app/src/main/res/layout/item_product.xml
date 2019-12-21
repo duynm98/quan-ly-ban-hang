@@ -7,29 +7,40 @@
     android:orientation="vertical"
     android:padding="8dp">
 
-    <TextView
-        android:id="@+id/tv_product_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="Chuột"
-        android:textColor="@color/mColorBlack"
-        android:textSize="16sp" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_product_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:text="Chuột để cắm vào máy tính"
-        android:textColor="@color/mColorGray"
-        android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:text="Chuột"
+            android:textColor="@color/mColorBlack"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/ic_edit" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_product_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
         android:padding="8dp"
         android:text="300.000 VND"
         android:textColor="@color/colorPrimaryDark"

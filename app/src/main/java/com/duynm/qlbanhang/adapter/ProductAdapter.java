@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,8 +46,19 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         Product product = products.get(position);
 
         holder.tvProductName.setText(product.getName());
-        holder.tvProductDescription.setText(product.getDescription());
         holder.tvProductPrice.setText(context.getResources().getString(R.string.product_price, product.getPrice()));
+        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        holder.ivEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -56,7 +68,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
 
         TextView tvProductName = itemView.findViewById(R.id.tv_product_name);
-        TextView tvProductDescription = itemView.findViewById(R.id.tv_product_description);
         TextView tvProductPrice = itemView.findViewById(R.id.tv_product_price);
+        ImageView ivDelete = itemView.findViewById(R.id.iv_delete);
+        ImageView ivEdit = itemView.findViewById(R.id.iv_edit);
     }
 }
