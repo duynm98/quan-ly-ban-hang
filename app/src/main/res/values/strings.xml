@@ -7,4 +7,14 @@
     <string name="list_order">Danh sách đơn hàng</string>
     <string name="list_product">Danh sách sản phẩm</string>
     <string name="product_price">%.2f VND</string>
+    <string name="are_you_sure_you_want_to_delete_this_product">Bạn có chắc chắn muốn xóa sản phẩm này?</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+
+    <string-array name="sort_type">
+        <item>Tên A->Z</item>
+        <item>Tên Z->A</item>
+        <item>Giá tăng dần</item>
+        <item>Giá giảm dần</item>
+    </string-array>
 </resources>

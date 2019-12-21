@@ -30,6 +30,12 @@ public class Product {
         this.type = type;
     }
 
+    public Product(String name, double price) {
+        this.id = -1;
+        this.name = name;
+        this.price = price;
+    }
+
     public int getId() {
         return id;
     }
