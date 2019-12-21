@@ -4,87 +4,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.addproduct.AddProductActivity"
     android:orientation="vertical"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    >
-    <ImageView
-        android:id="@+id/imgAddProduct"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:scaleType="centerCrop"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/ic_upload_image"/>
+    tools:context=".ui.addproduct.AddProductActivity">
 
-    <EditText
-        android:id="@+id/txtAddName"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:hint="Tên Sản phẩm"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
 
-    <EditText
-        android:id="@+id/txtAddPrice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Giá thành"
-        android:layout_marginTop="5dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
-        <TextView
+        <ImageView
+            android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Loại sản phẩm"
-            android:textSize="16sp"/>
-        <Spinner
-            android:id="@+id/spinnerAddType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"/>
-    </LinearLayout>
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_back" />
 
-    <EditText
-        android:id="@+id/txtAddOtherType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Loại sản phẩm"
-        android:visibility="gone"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=" Mô tả"
-        android:textSize="14sp"
-        android:layout_marginTop="10dp"/>
-
-    <EditText
-        android:id="@+id/txtAddDescription"
-        android:layout_marginTop="7dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:height="150dp"
-        android:background="@drawable/background_description"
-        android:textSize="16sp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:scrollbars="vertical"
-        android:paddingVertical="0dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/new_product"
+            android:textColor="@color/mColorWhite"
+            android:textSize="18sp" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
-    <Button
-        android:id="@+id/btnAddProduct"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Thêm"
-        android:layout_marginBottom="10dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+
+        <ImageView
+            android:id="@+id/imgAddProduct"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_upload_image" />
+
+        <EditText
+            android:id="@+id/txtAddName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:hint="Tên Sản phẩm" />
+
+        <EditText
+            android:id="@+id/txtAddPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Giá thành" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" Loại sản phẩm"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinnerAddType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/txtAddOtherType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Loại sản phẩm"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text=" Mô tả"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/txtAddDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:height="150dp"
+            android:background="@drawable/background_description"
+            android:paddingVertical="0dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:scrollbars="vertical"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnAddProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/add"
+            android:textColor="@color/mColorWhite" />
+    </LinearLayout>
 
 </LinearLayout>

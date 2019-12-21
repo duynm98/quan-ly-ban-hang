@@ -101,7 +101,7 @@ public class ProductController {
                         .subscribe(new Consumer<ArrayList<Product>>() {
                             @Override
                             public void accept(ArrayList<Product> products) {
-                                productNavigator.displayProducts(products);
+                                if (productNavigator != null) productNavigator.displayProducts(products);
                             }
                         })
         );
@@ -116,7 +116,7 @@ public class ProductController {
                         .subscribe(new Consumer<ArrayList<Product>>() {
                             @Override
                             public void accept(ArrayList<Product> products) {
-                                productNavigator.displayProducts(products);
+                                if (productNavigator != null) productNavigator.displayProducts(products);
                             }
                         })
         );
@@ -153,7 +153,7 @@ public class ProductController {
                 filterSortType = " ORDER BY " + COL_PRICE;
                 break;
             case PRICE_DEC:
-                filterSortType = " ORDEr BY " + COL_PRICE + " DESC";
+                filterSortType = " ORDER BY " + COL_PRICE + " DESC";
                 break;
         }
         query += filterSortType;
@@ -184,6 +184,31 @@ public class ProductController {
         return selectProductsByQuery(query);
     }
 
+    public ArrayList<String> selectAllType() {
+        String query = "SELECT DISTINCT type FROM " + TABLE_NAME;
+        ArrayList<String> allTypes = new ArrayList<>();
+        try {
+            SQLiteDatabase database = storeDatabase.getWritableDatabase();
+
+            Cursor cursor = database.rawQuery(query, null);
+
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                String type = cursor.getString(cursor.getColumnIndex(COL_TYPE));
+                if (type != null && !type.isEmpty())
+                    allTypes.add(cursor.getString(cursor.getColumnIndex(COL_TYPE)));
+//                products.add(productByCursor(cursor));
+                cursor.moveToNext();
+            }
+
+            cursor.close();
+        } catch (SQLiteException exception) {
+            exception.printStackTrace();
+        }
+
+        return allTypes;
+    }
+
     public void addProduct(Product product) {
         SQLiteDatabase database = storeDatabase.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -191,7 +216,7 @@ public class ProductController {
 //        contentValues.put(COL_ID, product.getId());
         contentValues.put(COL_NAME, product.getName());
         contentValues.put(COL_DESCRIPTION, product.getDescription());
-        contentValues.put(COL_IMAGE, product.getImagePath());
+        contentValues.put(COL_IMAGE, product.getImage());
         contentValues.put(COL_PRICE, product.getPrice());
         contentValues.put(COL_TYPE, product.getType());
 
@@ -216,10 +241,10 @@ public class ProductController {
         Product product = new Product(
                 Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1),
-                cursor.getString(3),
-                cursor.getString(4),
-                Double.parseDouble(cursor.getString(5)),
-                cursor.getString(6)
+                cursor.getString(2),
+                cursor.getBlob(3),
+                Double.parseDouble(cursor.getString(4)),
+                cursor.getString(5)
         );
 
         cursor.close();
@@ -237,7 +262,7 @@ public class ProductController {
                 cursor.getInt(cursor.getColumnIndex(COL_ID)),
                 cursor.getString(cursor.getColumnIndex(COL_NAME)),
                 cursor.getString(cursor.getColumnIndex(COL_DESCRIPTION)),
-                cursor.getString(cursor.getColumnIndex(COL_IMAGE)),
+                cursor.getBlob(cursor.getColumnIndex(COL_IMAGE)),
                 cursor.getDouble(cursor.getColumnIndex(COL_PRICE)),
                 cursor.getString(cursor.getColumnIndex(COL_TYPE))
         );
@@ -262,7 +287,7 @@ public class ProductController {
 
         contentValues.put(COL_NAME, product.getName());
         contentValues.put(COL_DESCRIPTION, product.getDescription());
-        contentValues.put(COL_IMAGE, product.getImagePath());
+        contentValues.put(COL_IMAGE, product.getImage());
         contentValues.put(COL_PRICE, product.getPrice());
         contentValues.put(COL_TYPE, product.getType());
 

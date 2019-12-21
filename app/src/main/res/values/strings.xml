@@ -10,6 +10,12 @@
     <string name="are_you_sure_you_want_to_delete_this_product">Bạn có chắc chắn muốn xóa sản phẩm này?</string>
     <string name="yes">Có</string>
     <string name="no">Không</string>
+    <string name="new_product">Sản phẩm mới</string>
+    <string name="add">Thêm</string>
+    <string name="product_inserted">Đã thêm sản phẩm mới</string>
+    <string name="invalid_data">Dữ liệu không hợp lệ</string>
+    <string name="new_type">Thêm mới</string>
+    <string name="product_info">Thông tin sản phẩm</string>
 
     <string-array name="sort_type">
         <item>Tên A->Z</item>

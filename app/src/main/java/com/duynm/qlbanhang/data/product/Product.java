@@ -8,24 +8,24 @@ public class Product {
     private int id;
     private String name;
     private String description;
-    private String imagePath;
+    private byte[] image;
     private double price;
     private String type;
 
-    public Product(int id, String name, String description, String imagePath, double price, String type) {
+    public Product(int id, String name, String description, byte[] image, double price, String type) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.imagePath = imagePath;
+        this.image = image;
         this.price = price;
         this.type = type;
     }
 
-    public Product(String name, String description, String imagePath, double price, String type) {
+    public Product(String name, String description, byte[] image, double price, String type) {
         this.id = -1;
         this.name = name;
         this.description = description;
-        this.imagePath = imagePath;
+        this.image = image;
         this.price = price;
         this.type = type;
     }
@@ -60,12 +60,12 @@ public class Product {
         this.description = description;
     }
 
-    public String getImagePath() {
-        return imagePath;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public double getPrice() {

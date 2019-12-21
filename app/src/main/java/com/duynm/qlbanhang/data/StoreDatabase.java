@@ -22,7 +22,7 @@ public class StoreDatabase extends SQLiteOpenHelper {
                 "id INTEGER PRIMARY KEY NOT NULL," +
                 "name TEXT NOT NULL," +
                 "description TEXT," +
-                "image TEXT," +
+                "image BLOB," +
                 "price DOUBLE NOT NULL," +
                 "type TEXT)");
     }

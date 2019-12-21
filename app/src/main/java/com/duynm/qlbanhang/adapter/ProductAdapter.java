@@ -3,6 +3,9 @@ package com.duynm.qlbanhang.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.duynm.qlbanhang.R;
 import com.duynm.qlbanhang.data.product.Product;
 import com.duynm.qlbanhang.data.product.ProductController;
+import com.duynm.qlbanhang.ui.detailproduct.DetailProductActivity;
 
 import java.util.ArrayList;
 
@@ -83,10 +88,22 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             }
         });
 
+        byte[] bitmapData = product.getImage();
+        if (bitmapData != null) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(bitmapData, 0, bitmapData.length);
+            holder.ivProduct.setImageBitmap(bitmap);
+        } else {
+            holder.ivProduct.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.product));
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "ID = " + product.getId(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, DetailProductActivity.class);
+
+                intent.putExtra("PRODUCT_ID", product.getId());
+
+                context.startActivity(intent);
             }
         });
     }
@@ -107,5 +124,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         TextView tvProductPrice = itemView.findViewById(R.id.tv_product_price);
         ImageView ivDelete = itemView.findViewById(R.id.iv_delete);
         ImageView ivEdit = itemView.findViewById(R.id.iv_edit);
+        ImageView ivProduct = itemView.findViewById(R.id.iv_product);
     }
 }

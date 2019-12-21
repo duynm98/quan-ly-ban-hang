@@ -6,5 +6,5 @@ import java.util.ArrayList;
  * Created by DuyNM on 15/12/2019
  */
 public interface ProductNavigator {
-    public void displayProducts(ArrayList<Product> products);
+    void displayProducts(ArrayList<Product> products);
 }

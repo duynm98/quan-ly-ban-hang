@@ -1,5 +1,6 @@
 package com.duynm.qlbanhang.ui.home.listproduct;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +17,7 @@ import com.duynm.qlbanhang.base.BaseFragment;
 import com.duynm.qlbanhang.data.product.Product;
 import com.duynm.qlbanhang.data.product.ProductController;
 import com.duynm.qlbanhang.data.product.ProductNavigator;
+import com.duynm.qlbanhang.ui.addproduct.AddProductActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -52,7 +54,7 @@ public class ListProductFragment extends BaseFragment implements ProductNavigato
         productController = new ProductController(getContext(), this);
         productController.getAllProducts();
 
-        fakeData();
+//        fakeData();
 //        fakeData2();
         initRecyclerView();
         initFAB();
@@ -161,7 +163,8 @@ public class ListProductFragment extends BaseFragment implements ProductNavigato
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.fab_add:
-                Toast.makeText(getContext(), "Add new", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), AddProductActivity.class);
+                startActivity(intent);
                 break;
         }
     }
