@@ -6,4 +6,5 @@
     <string name="more">Thêm</string>
     <string name="list_order">Danh sách đơn hàng</string>
     <string name="list_product">Danh sách sản phẩm</string>
+    <string name="product_price">%.2f VND</string>
 </resources>

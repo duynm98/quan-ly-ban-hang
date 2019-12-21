@@ -5,4 +5,6 @@
     <color name="colorAccent">#B39DDB</color>
 
     <color name="mColorWhite">#FFFFFF</color>
+    <color name="mColorBlack">#000000</color>
+    <color name="mColorGray">#404040</color>
 </resources>
