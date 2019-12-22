@@ -126,6 +126,7 @@ public class AddProductActivity extends AppCompatActivity implements ProductNavi
                 if (position == allTypes.size() - 1) {
                     txtAddOtherType.setVisibility(View.VISIBLE);
                     type = "";
+                    txtAddOtherType.requestFocus();
                 } else {
                     txtAddOtherType.setVisibility(View.GONE);
                     type = allTypes.get(position);

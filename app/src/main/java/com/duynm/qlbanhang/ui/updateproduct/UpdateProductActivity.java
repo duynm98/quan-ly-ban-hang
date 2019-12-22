@@ -31,7 +31,7 @@ import java.util.ArrayList;
 
 public class UpdateProductActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageView imgUpdateProduct;
+    private ImageView ivBack, imgUpdateProduct;
     private EditText txtUpdateName, txtUpdatePrice, txtUpdateOtherType, txtUpdateDescription;
     private Button btnUpdateProduct;
     private Spinner spnUpdateType;
@@ -66,6 +66,7 @@ public class UpdateProductActivity extends AppCompatActivity implements View.OnC
     }
 
     private void initViewComponent() {
+        ivBack = findViewById(R.id.iv_back);
         imgUpdateProduct = findViewById(R.id.imgUpdateProduct);
         txtUpdateName = findViewById(R.id.txtUpdateName);
         txtUpdatePrice = findViewById(R.id.txtUpdatePrice);
@@ -89,7 +90,12 @@ public class UpdateProductActivity extends AppCompatActivity implements View.OnC
         } else {
             imgUpdateProduct.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.product));
         }
-
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         txtUpdateName.setText(product.getName());
         txtUpdateDescription.setText(product.getDescription());
 //        txtUpdateOtherType.setText(product.getType());
@@ -111,6 +117,7 @@ public class UpdateProductActivity extends AppCompatActivity implements View.OnC
                 if (position == allTypes.size() - 1) {
                     txtUpdateOtherType.setVisibility(View.VISIBLE);
                     type = "";
+                    txtUpdateOtherType.requestFocus();
                 } else {
                     txtUpdateOtherType.setVisibility(View.GONE);
                     type = allTypes.get(position);

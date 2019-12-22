@@ -101,8 +101,8 @@ public class DetailProductActivity extends BaseActivity implements View.OnClickL
 
             case R.id.btn_delete_product:
                 new AlertDialog.Builder(this)
-                        .setTitle(product.getName())
-                        .setMessage(getString(R.string.are_you_sure_you_want_to_delete_this_product))
+                        .setTitle("Xác nhận xóa")
+                        .setMessage("Bạn có chắc chắn muốn xóa "+product.getName()+" khỏi danh sách sản phẩm ?")
                         .setCancelable(true)
                         .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                             @Override
