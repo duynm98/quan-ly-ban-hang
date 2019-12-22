@@ -26,6 +26,7 @@
     <string name="all">Tất cả</string>
     <string name="edit">Chỉnh sửa</string>
     <string name="delete">Xóa</string>
+    <string name="deteled">Đã xóa</string>
 
     <string-array name="sort_type">
         <item>Tên A->Z</item>

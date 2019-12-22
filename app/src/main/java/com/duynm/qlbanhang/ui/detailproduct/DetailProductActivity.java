@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.duynm.qlbanhang.R;
 import com.duynm.qlbanhang.base.BaseActivity;
@@ -108,6 +109,8 @@ public class DetailProductActivity extends BaseActivity implements View.OnClickL
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
                                 productController.deleteProduct(product);
+                                Toast.makeText(DetailProductActivity.this, getString(R.string.deteled),Toast.LENGTH_SHORT).show();
+                                DetailProductActivity.this.finish();
                             }
                         })
                         .setNegativeButton(getString(R.string.no), new DialogInterface.OnClickListener() {
