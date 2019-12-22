@@ -62,7 +62,6 @@ public class AddProductActivity extends AppCompatActivity implements ProductNavi
         txtDescription = findViewById(R.id.txtAddDescription);
         spinnerAddType = findViewById(R.id.spinnerAddType);
         txtAddOtherType = findViewById(R.id.txtAddOtherType);
-        txtPrice.setInputType(InputType.TYPE_CLASS_NUMBER);
     }
 
     private void addEvents() {
