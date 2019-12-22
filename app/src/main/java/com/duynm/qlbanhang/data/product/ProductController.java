@@ -23,6 +23,8 @@ import io.reactivex.schedulers.Schedulers;
  */
 public class ProductController {
 
+    public final static Double MAX_PRICE = 9999999999D;
+
     private final static String TABLE_NAME = "product";
 
     private final static String COL_ID = "id";
@@ -40,7 +42,7 @@ public class ProductController {
     private SortType sortType = SortType.NAME_INC;
     private String type = "";
     private double minPrice = -1;
-    private double maxPrice = Double.MAX_VALUE;
+    private double maxPrice = MAX_PRICE;
 
     private Context context;
     private ProductNavigator productNavigator;
@@ -88,8 +90,10 @@ public class ProductController {
         this.maxPrice = maxPrice;
     }
 
-    public void clearTask() {
-        compositeDisposable.clear();
+    public void resetFilter() {
+        type = "";
+        minPrice = -1;
+        maxPrice = MAX_PRICE;
     }
 
     public void getAllProducts() {
@@ -141,6 +145,21 @@ public class ProductController {
     }
 
     private ArrayList<Product> selectProductsByQuery(String query) {
+        String filterType = "";
+        if (type != null && !type.isEmpty())
+            filterType = " WHERE type LIKE '" + type + "'";
+
+        String filterPrice = "";
+        String prefig = filterType.isEmpty() ? " WHERE" : " AND";
+        if (minPrice > 0 && maxPrice < MAX_PRICE) {
+            filterPrice = " price BETWEEN " + minPrice + " AND " + maxPrice;
+        } else if (minPrice < 0) {
+            filterPrice = " price < " + maxPrice;
+        } else if (maxPrice >= MAX_PRICE) {
+            filterPrice = " price > " + minPrice;
+        }
+        if (!filterPrice.isEmpty()) filterPrice = prefig + filterPrice;
+
         String filterSortType = "";
         switch (sortType) {
             case NAME_INC:
@@ -156,7 +175,7 @@ public class ProductController {
                 filterSortType = " ORDER BY " + COL_PRICE + " DESC";
                 break;
         }
-        query += filterSortType;
+        query += filterType + filterPrice + filterSortType;
         Log.d("__PRODUCT", "Query = " + query);
         ArrayList<Product> products = new ArrayList<>();
 

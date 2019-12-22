@@ -1,10 +1,15 @@
 package com.duynm.qlbanhang.ui.home.listproduct;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,9 +37,12 @@ public class ListProductFragment extends BaseFragment implements ProductNavigato
     private FloatingActionButton fabAdd;
     private SearchView searchView;
     private Spinner spnSort;
+    private ImageView ivFilter;
 
     //Variables
     private ProductController productController;
+
+    private ArrayList<String> allTypes;
 
     @Override
     protected int getLayoutResource() {
@@ -47,6 +55,10 @@ public class ListProductFragment extends BaseFragment implements ProductNavigato
         fabAdd = getView().findViewById(R.id.fab_add);
         searchView = getView().findViewById(R.id.searchView);
         spnSort = getView().findViewById(R.id.spn_sort);
+        ivFilter = getView().findViewById(R.id.iv_filter);
+
+        fabAdd.setOnClickListener(this);
+        ivFilter.setOnClickListener(this);
     }
 
     @Override
@@ -57,9 +69,26 @@ public class ListProductFragment extends BaseFragment implements ProductNavigato
 //        fakeData();
 //        fakeData2();
         initRecyclerView();
-        initFAB();
         initSearchView();
         initSpinner();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (searchView != null) {
+            searchView.setQuery("", false);
+            searchView.clearFocus();
+        }
+        if (productController != null) productController.getAllProducts();
+    }
+
+    private void refreshListProduct() {
+        if (searchView != null && !searchView.getQuery().toString().isEmpty()) {
+            productController.getProductsByKeyword(searchView.getQuery().toString().trim());
+        } else {
+            productController.getAllProducts();
+        }
     }
 
     private void fakeData() {
@@ -88,10 +117,6 @@ public class ListProductFragment extends BaseFragment implements ProductNavigato
         ProductAdapter productAdapter = new ProductAdapter(getContext(), new ArrayList<Product>(), productController);
 
         rvProducts.setAdapter(productAdapter);
-    }
-
-    private void initFAB() {
-        fabAdd.setOnClickListener(this);
     }
 
     private void initSearchView() {
@@ -136,11 +161,7 @@ public class ListProductFragment extends BaseFragment implements ProductNavigato
                         productController.setSortType(ProductController.SortType.PRICE_DEC);
                         break;
                 }
-                if (searchView != null && !searchView.getQuery().toString().isEmpty()) {
-                    productController.getProductsByKeyword(searchView.getQuery().toString().trim());
-                } else {
-                    productController.getAllProducts();
-                }
+                refreshListProduct();
             }
 
             @Override
@@ -148,6 +169,71 @@ public class ListProductFragment extends BaseFragment implements ProductNavigato
 
             }
         });
+    }
+
+    private void displayFilterDialog() {
+        if (getContext() == null) return;
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View filterAlertLayout = layoutInflater.inflate(R.layout.layout_filter_dialog, null);
+
+        final EditText edtPriceFrom = filterAlertLayout.findViewById(R.id.edt_price_from);
+        final EditText edtPriceTo = filterAlertLayout.findViewById(R.id.edt_price_to);
+        Spinner spnFilterType = filterAlertLayout.findViewById(R.id.spn_filter_type);
+
+        allTypes = productController.selectAllType();
+        if (allTypes == null) allTypes = new ArrayList();
+        allTypes.add(0, getString(R.string.all));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, allTypes);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spnFilterType.setAdapter(adapter);
+        spnFilterType.setSelection(0);
+        spnFilterType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                if (position == 0) {
+                    productController.setType("");
+                } else {
+                    productController.setType(allTypes.get(position));
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                productController.setType("");
+            }
+        });
+
+        new AlertDialog.Builder(getContext())
+                .setTitle(getString(R.string.filter))
+                .setView(filterAlertLayout)
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.apply), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String minPriceText = edtPriceFrom.getText().toString().trim();
+                        String maxPriceText = edtPriceTo.getText().toString().trim();
+                        double minPrice = minPriceText.isEmpty() ? -1 : Double.parseDouble(minPriceText);
+                        double maxPrice = maxPriceText.isEmpty() ? ProductController.MAX_PRICE : Double.parseDouble(maxPriceText);
+
+                        if (minPrice > maxPrice) {
+                            Toast.makeText(getContext(), getString(R.string.invalid_data), Toast.LENGTH_SHORT).show();
+                        } else {
+                            productController.setMinPrice(minPrice);
+                            productController.setMaxPrice(maxPrice);
+                            refreshListProduct();
+                            dialogInterface.dismiss();
+                        }
+                    }
+                })
+                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        productController.resetFilter();
+                        dialogInterface.dismiss();
+                    }
+                })
+                .create()
+                .show();
     }
 
     @Override
@@ -165,6 +251,9 @@ public class ListProductFragment extends BaseFragment implements ProductNavigato
             case R.id.fab_add:
                 Intent intent = new Intent(getActivity(), AddProductActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.iv_filter:
+                displayFilterDialog();
                 break;
         }
     }

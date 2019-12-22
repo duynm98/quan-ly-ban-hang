@@ -16,6 +16,16 @@
     <string name="invalid_data">Dữ liệu không hợp lệ</string>
     <string name="new_type">Thêm mới</string>
     <string name="product_info">Thông tin sản phẩm</string>
+    <string name="type_product">Loại sản phẩm</string>
+    <string name="price_range">Khoảng giá</string>
+    <string name="from">Từ</string>
+    <string name="to">Đến</string>
+    <string name="apply">Áp dụng</string>
+    <string name="cancel">Hủy</string>
+    <string name="filter">Bộ lọc</string>
+    <string name="all">Tất cả</string>
+    <string name="edit">Chỉnh sửa</string>
+    <string name="delete">Xóa</string>
 
     <string-array name="sort_type">
         <item>Tên A->Z</item>

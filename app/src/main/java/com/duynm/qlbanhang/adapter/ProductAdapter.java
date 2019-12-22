@@ -58,35 +58,29 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         holder.tvProductName.setText(product.getName());
         holder.tvProductPrice.setText(context.getResources().getString(R.string.product_price, product.getPrice()));
-        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new AlertDialog.Builder(context)
-                        .setTitle(product.getName())
-                        .setMessage(context.getString(R.string.are_you_sure_you_want_to_delete_this_product))
-                        .setCancelable(true)
-                        .setPositiveButton(context.getString(R.string.yes), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                                productController.deleteProduct(product);
-                            }
-                        })
-                        .setNegativeButton(context.getString(R.string.no), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        })
-                        .show();
-            }
-        });
-        holder.ivEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+//        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                new AlertDialog.Builder(context)
+//                        .setTitle(product.getName())
+//                        .setMessage(context.getString(R.string.are_you_sure_you_want_to_delete_this_product))
+//                        .setCancelable(true)
+//                        .setPositiveButton(context.getString(R.string.yes), new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                dialogInterface.dismiss();
+//                                productController.deleteProduct(product);
+//                            }
+//                        })
+//                        .setNegativeButton(context.getString(R.string.no), new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                dialogInterface.dismiss();
+//                            }
+//                        })
+//                        .show();
+//            }
+//        });
 
         byte[] bitmapData = product.getImage();
         if (bitmapData != null) {
@@ -122,8 +116,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         TextView tvProductName = itemView.findViewById(R.id.tv_product_name);
         TextView tvProductPrice = itemView.findViewById(R.id.tv_product_price);
-        ImageView ivDelete = itemView.findViewById(R.id.iv_delete);
-        ImageView ivEdit = itemView.findViewById(R.id.iv_edit);
+//        ImageView ivDelete = itemView.findViewById(R.id.iv_delete);
+//        ImageView ivEdit = itemView.findViewById(R.id.iv_edit);
         ImageView ivProduct = itemView.findViewById(R.id.iv_product);
     }
 }

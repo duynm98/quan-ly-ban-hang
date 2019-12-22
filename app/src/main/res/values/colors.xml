@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#512DA8</color>
     <color name="colorAccent">#B39DDB</color>
     <color name="mColorBackground">#F0F0F0</color>
+    <color name="mColorError">#B00020</color>
 
     <color name="mColorWhite">#FFFFFF</color>
     <color name="mColorBlack">#000000</color>

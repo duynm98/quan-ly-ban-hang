@@ -84,17 +84,28 @@ public class AddProductActivity extends AppCompatActivity implements ProductNavi
                     Toast.makeText(AddProductActivity.this, getString(R.string.invalid_data), Toast.LENGTH_SHORT).show();
                 } else {
                     if (type.isEmpty()) type = txtAddOtherType.getText().toString();
-                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                    byte[] byteArray = stream.toByteArray();
-                    bitmap.recycle();
-                    productController.addProduct(new Product(
-                            txtName.getText().toString(),
-                            txtDescription.getText().toString(),
-                            byteArray,
-                            Double.parseDouble(txtPrice.getText().toString()),
-                            type.trim()
-                    ));
+                    if (bitmap == null) {
+                        productController.addProduct(new Product(
+                                txtName.getText().toString(),
+                                txtDescription.getText().toString(),
+                                null,
+                                Double.parseDouble(txtPrice.getText().toString()),
+                                type.trim()
+                        ));
+                    } else {
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        byte[] byteArray = stream.toByteArray();
+                        bitmap.recycle();
+                        productController.addProduct(new Product(
+                                txtName.getText().toString(),
+                                txtDescription.getText().toString(),
+                                byteArray,
+                                Double.parseDouble(txtPrice.getText().toString()),
+                                type.trim()
+                        ));
+                    }
+
                     Toast.makeText(AddProductActivity.this, type, Toast.LENGTH_SHORT).show();
                     finish();
                 }

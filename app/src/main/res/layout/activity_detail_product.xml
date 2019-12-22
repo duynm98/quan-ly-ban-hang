@@ -11,15 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:gravity="center_vertical"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp">
+        android:gravity="center_vertical">
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_centerVertical="true"
+            android:padding="8dp"
             android:src="@drawable/ic_back" />
 
         <TextView
@@ -125,11 +124,34 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/btnDetailUpdate"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thay đổi" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_edit_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="@string/edit"
+                android:textColor="@color/mColorWhite" />
+
+            <Button
+                android:id="@+id/btn_delete_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@color/mColorError"
+                android:text="@string/delete"
+                android:textColor="@color/mColorWhite" />
+
+        </LinearLayout>
     </LinearLayout>
 
 
