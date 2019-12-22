@@ -28,6 +28,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class UpdateProductActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -46,6 +47,7 @@ public class UpdateProductActivity extends AppCompatActivity implements View.OnC
 
     final int RESQUEST_TAKE_PHOTO = 123;
     final int REQUEST_CHOOSE_PHOTO = 321;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +133,7 @@ public class UpdateProductActivity extends AppCompatActivity implements View.OnC
     }
 
     private void updateProduct() {
-        if (txtUpdateName.getText().toString().isEmpty() || txtUpdatePrice.getText().toString().isEmpty()) {
+        if (txtUpdateName.getText().toString().isEmpty() || txtUpdatePrice.getText().toString().isEmpty() || !Pattern.compile(pricePattern).matcher(txtUpdatePrice.getText().toString()).matches()) {
             Toast.makeText(this, getString(R.string.invalid_data), Toast.LENGTH_SHORT).show();
         } else {
             if (type.isEmpty()) type = txtUpdateOtherType.getText().toString();

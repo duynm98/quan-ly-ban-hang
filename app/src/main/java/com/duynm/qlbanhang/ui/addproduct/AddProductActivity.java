@@ -28,6 +28,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class AddProductActivity extends AppCompatActivity implements ProductNavigator {
     Button btnTakePhoto, btnSelectPhoto, btnAddProduct;
@@ -41,7 +42,8 @@ public class AddProductActivity extends AppCompatActivity implements ProductNavi
     private String type = "";
     private ArrayList<String> allTypes;
     private Bitmap bitmap;
-
+    private String pricePattern = "^[0-9]+$";  // price hợp lệ chỉ chứa các chữ số
+    private Pattern pattern;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,7 +82,7 @@ public class AddProductActivity extends AppCompatActivity implements ProductNavi
             @Override
             public void onClick(View view) {
                 //Check and add new Product
-                if (txtName.getText().toString().isEmpty() || txtPrice.getText().toString().isEmpty()) {
+                if (txtName.getText().toString().isEmpty() || txtPrice.getText().toString().isEmpty() || !Pattern.compile(pricePattern).matcher(txtPrice.getText().toString()).matches()) {
                     Toast.makeText(AddProductActivity.this, getString(R.string.invalid_data), Toast.LENGTH_SHORT).show();
                 } else {
                     if (type.isEmpty()) type = txtAddOtherType.getText().toString();
