@@ -133,7 +133,7 @@ public class UpdateProductActivity extends AppCompatActivity implements View.OnC
     }
 
     private void updateProduct() {
-        if (txtUpdateName.getText().toString().isEmpty() || txtUpdatePrice.getText().toString().isEmpty() || !Pattern.compile(pricePattern).matcher(txtUpdatePrice.getText().toString()).matches()) {
+        if (txtUpdateName.getText().toString().isEmpty() || txtUpdatePrice.getText().toString().isEmpty() ) {
             Toast.makeText(this, getString(R.string.invalid_data), Toast.LENGTH_SHORT).show();
         } else {
             if (type.isEmpty()) type = txtUpdateOtherType.getText().toString();

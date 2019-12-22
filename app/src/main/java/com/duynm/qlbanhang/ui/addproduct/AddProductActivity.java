@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -42,8 +43,6 @@ public class AddProductActivity extends AppCompatActivity implements ProductNavi
     private String type = "";
     private ArrayList<String> allTypes;
     private Bitmap bitmap;
-    private String pricePattern = "^[0-9]+$";  // price hợp lệ chỉ chứa các chữ số
-    private Pattern pattern;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +62,7 @@ public class AddProductActivity extends AppCompatActivity implements ProductNavi
         txtDescription = findViewById(R.id.txtAddDescription);
         spinnerAddType = findViewById(R.id.spinnerAddType);
         txtAddOtherType = findViewById(R.id.txtAddOtherType);
+        txtPrice.setInputType(InputType.TYPE_CLASS_NUMBER);
     }
 
     private void addEvents() {
@@ -82,7 +82,7 @@ public class AddProductActivity extends AppCompatActivity implements ProductNavi
             @Override
             public void onClick(View view) {
                 //Check and add new Product
-                if (txtName.getText().toString().isEmpty() || txtPrice.getText().toString().isEmpty() || !Pattern.compile(pricePattern).matcher(txtPrice.getText().toString()).matches()) {
+                if (txtName.getText().toString().isEmpty() || txtPrice.getText().toString().isEmpty()) {
                     Toast.makeText(AddProductActivity.this, getString(R.string.invalid_data), Toast.LENGTH_SHORT).show();
                 } else {
                     if (type.isEmpty()) type = txtAddOtherType.getText().toString();
