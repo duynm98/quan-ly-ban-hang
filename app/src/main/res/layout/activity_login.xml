@@ -4,56 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Login.LoginActivity"
-    android:orientation="vertical"
     android:background="@color/colorPrimary"
-    android:padding="8dp">
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".ui.Login.LoginActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_marginTop="32dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@mipmap/ic_launcher"
-            android:background="@color/colorAccent"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="16dp"
+            android:background="@color/colorAccent"
+            android:src="@mipmap/ic_launcher" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quản lí bán hàng"
+            android:layout_marginTop="16dp"
             android:gravity="center_horizontal"
+            android:text="Quản lí bán hàng"
             android:textColor="@color/mColorWhite"
-            android:textSize="23sp"
-            android:layout_marginTop="16dp"/>
+            android:textSize="24sp" />
+
         <EditText
             android:id="@+id/txtAcount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/mColorWhite"
             android:hint="Tên đăng nhập"
             android:textColor="@color/mColorWhite"
             android:textColorHint="@color/mColorWhite"
-            android:backgroundTint="@color/mColorWhite"
-            android:layout_marginTop="25dp"/>
+            android:textSize="16sp" />
+
         <EditText
-            android:id="@+id/txtPassWord"
+            android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mật khẩu"
-            android:textColorHint="@color/mColorWhite"
-            android:textColor="@color/mColorWhite"
+            android:layout_marginBottom="8dp"
             android:backgroundTint="@color/mColorWhite"
-            android:inputType="textPassword"/>
+            android:hint="Mật khẩu"
+            android:textColor="@color/mColorWhite"
+            android:textColorHint="@color/mColorWhite"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đăng nhập"
-            android:textColor="@color/mColorWhite"
             android:layout_marginTop="25dp"
-            android:background="@color/colorAccent"/>
+            android:background="@color/colorAccent"
+            android:text="Đăng nhập"
+            android:textColor="@color/mColorWhite" />
     </LinearLayout>
 
 
@@ -61,12 +71,11 @@
         android:id="@+id/txtSignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="8dp"
         android:text="Đăng kí"
         android:textColor="@color/mColorWhite"
-        android:textSize="15sp"
-        android:gravity="center_horizontal"/>
-
-
+        android:textSize="18sp" />
 
 
 </LinearLayout>
