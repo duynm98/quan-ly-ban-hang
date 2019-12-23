@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.addorder.AddOrderActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.addorder.AddOrderActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -33,89 +34,103 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="8dp">
+
             <EditText
                 android:id="@+id/txtAddOrderNameCustomer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Tên khách hàng"/>
+                android:hint="Tên khách hàng" />
+
             <EditText
                 android:id="@+id/txtAddOrderAddressCustomer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Địa chỉ"/>
+                android:hint="Địa chỉ" />
+
             <EditText
                 android:id="@+id/txtAddOrderPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Số điện thoại"
-                android:inputType="number"/>
+                android:inputType="number" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text=" Danh sách sản phẩm"
-                    android:textSize="17sp"
-                    android:layout_weight="1"/>
+                    android:textSize="17sp" />
+
                 <ImageView
                     android:id="@+id/ivAddOrderAddProduct"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_plus"
-                    android:tint="@color/colorAccent"
-                    android:layout_gravity="center_vertical"/>
+                    android:tint="@color/colorAccent" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thêm"
-                    android:textSize="17dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"/>
+                    android:layout_marginRight="10dp"
+                    android:text="Thêm"
+                    android:textSize="17dp" />
             </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_addorder_products"
-                android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:scrollbars="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_product_ordred"
-                android:scrollbars="vertical"/>
+                tools:listitem="@layout/item_product_ordred" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:text=" Tổng số tiền:"
-                    android:textStyle="bold"
                     android:textSize="20sp"
-                    android:layout_weight="1"/>
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
                     android:text="150000 VND"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginRight="10dp"/>
+                    android:textStyle="bold" />
             </LinearLayout>
-            <Button
-                android:id="@+id/btnAddOrderCreateOrder"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tạo đơn hàng"/>
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnAddOrderCreateOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Tạo đơn hàng" />
 
 </LinearLayout>

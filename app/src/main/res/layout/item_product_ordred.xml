@@ -6,20 +6,21 @@
     android:background="@color/mColorWhite"
     android:orientation="horizontal"
     android:padding="8dp">
+
     <ImageView
         android:id="@+id/ivOrderItemDelete"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_delete"
-        android:layout_gravity="center"/>
-
-    <LinearLayout
-        android:layout_marginLeft="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_remove" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,28 +48,31 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp" />
     </LinearLayout>
+
     <ImageView
         android:id="@+id/ivOrderItemMinus"
         android:layout_width="16dp"
         android:layout_height="16dp"
-        android:src="@drawable/ic_minus"
         android:layout_gravity="center"
-        android:tint="@color/colorAccent"/>
+        android:src="@drawable/ic_minus"
+        android:tint="@color/colorAccent" />
+
     <EditText
         android:id="@+id/txtOrderItemNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="3"
-        android:textSize="25sp"
         android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"/>
+        android:layout_marginRight="14dp"
+        android:text="3"
+        android:textSize="18sp" />
+
     <ImageView
         android:id="@+id/ivOrderItemPlus"
         android:layout_width="16dp"
         android:layout_height="16dp"
-        android:src="@drawable/ic_plus"
-        android:tint="@color/colorAccent"
         android:layout_gravity="center"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginRight="5dp"
+        android:src="@drawable/ic_plus"
+        android:tint="@color/colorAccent" />
 </LinearLayout>
