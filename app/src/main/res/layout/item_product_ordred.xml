@@ -8,7 +8,7 @@
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/ivOrderItemDelete"
+        android:id="@+id/iv_remove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -50,15 +50,16 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/ivOrderItemMinus"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
+        android:id="@+id/iv_minus"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_gravity="center"
+        android:padding="8dp"
         android:src="@drawable/ic_minus"
         android:tint="@color/colorAccent" />
 
     <EditText
-        android:id="@+id/txtOrderItemNumber"
+        android:id="@+id/edt_product_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -68,11 +69,24 @@
         android:textSize="18sp" />
 
     <ImageView
-        android:id="@+id/ivOrderItemPlus"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
+        android:id="@+id/iv_plus"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_gravity="center"
         android:layout_marginRight="5dp"
+        android:padding="8dp"
         android:src="@drawable/ic_plus"
         android:tint="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/tv_product_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:text="3"
+        android:textColor="@color/mColorBlack"
+        android:textSize="18sp"
+        android:visibility="gone" />
 </LinearLayout>

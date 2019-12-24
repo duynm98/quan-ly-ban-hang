@@ -36,7 +36,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:padding="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,19 +46,19 @@
             android:padding="8dp">
 
             <EditText
-                android:id="@+id/txtAddOrderNameCustomer"
+                android:id="@+id/edt_customer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Tên khách hàng" />
 
             <EditText
-                android:id="@+id/txtAddOrderAddressCustomer"
+                android:id="@+id/edt_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Địa chỉ" />
 
             <EditText
-                android:id="@+id/txtAddOrderPhone"
+                android:id="@+id/edt_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Số điện thoại"
@@ -77,7 +78,7 @@
                     android:textSize="17sp" />
 
                 <ImageView
-                    android:id="@+id/ivAddOrderAddProduct"
+                    android:id="@+id/iv_add_product"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
@@ -85,6 +86,7 @@
                     android:tint="@color/colorAccent" />
 
                 <TextView
+                    android:id="@+id/tv_add_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -94,7 +96,7 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_addorder_products"
+                android:id="@+id/rv_order_products"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -105,7 +107,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -127,10 +130,13 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btnAddOrderCreateOrder"
+        android:id="@+id/btn_create_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Tạo đơn hàng" />
+        android:layout_margin="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        android:text="Tạo đơn hàng"
+        android:textColor="@color/mColorWhite" />
 
 </LinearLayout>

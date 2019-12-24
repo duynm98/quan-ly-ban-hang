@@ -27,6 +27,17 @@
     <string name="edit">Chỉnh sửa</string>
     <string name="delete">Xóa</string>
     <string name="deteled">Đã xóa</string>
+    <string name="new_order">Đơn hàng mới</string>
+    <string name="mark_this_is_paid">Đánh dấu đơn hàng này đã thanh toán?</string>
+    <string name="mark_this_is_unpaid">Đánh dấu đơn hàng này chưa được thanh toán?</string>
+    <string name="order_info">Thông tin đơn hàng</string>
+    <string name="mark_paid">Đã thanh toán</string>
+    <string name="mark_unpaid">Chưa thanh toán</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="are_you_sure_you_want_to_delete_this_order">Bạn có chắc chắn muốn xóa đơn hàng này?</string>
+    <string name="add_phone_number">Thêm số điện thoại</string>
+    <string name="add_address">Thêm địa chỉ</string>
+    <string name="log_out">Đăng xuất</string>
 
     <string-array name="sort_type">
         <item>Tên A->Z</item>

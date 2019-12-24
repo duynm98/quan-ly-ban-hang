@@ -1,8 +1,6 @@
 package com.duynm.qlbanhang.adapter;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -21,6 +18,7 @@ import com.duynm.qlbanhang.R;
 import com.duynm.qlbanhang.data.product.Product;
 import com.duynm.qlbanhang.data.product.ProductController;
 import com.duynm.qlbanhang.ui.detailproduct.DetailProductActivity;
+import com.duynm.qlbanhang.utils.OnItemClickListener;
 
 import java.util.ArrayList;
 
@@ -33,10 +31,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private ArrayList<Product> products;
     private ProductController productController;
 
+    private OnItemClickListener<Product> onItemClickListener;
+
     public ProductAdapter(Context context, ArrayList<Product> products, ProductController productController) {
         this.context = context;
         this.products = products;
         this.productController = productController;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener<Product> onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public ArrayList<Product> getProducts() {
+        return products;
     }
 
     @NonNull
@@ -53,12 +61,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         final Product product = products.get(position);
 
         holder.tvProductName.setText(product.getName());
         holder.tvProductPrice.setText(context.getResources().getString(R.string.product_price, product.getPrice()));
-//        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
+//        holder.ivDelete.setOnItemClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
 //                new AlertDialog.Builder(context)
@@ -93,11 +101,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, DetailProductActivity.class);
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(product);
+                } else {
+                    Intent intent = new Intent(context, DetailProductActivity.class);
 
-                intent.putExtra("PRODUCT_ID", product.getId());
+                    intent.putExtra("PRODUCT_ID", product.getId());
 
-                context.startActivity(intent);
+                    context.startActivity(intent);
+
+                }
             }
         });
     }
@@ -116,7 +129,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         TextView tvProductName = itemView.findViewById(R.id.tv_product_name);
         TextView tvProductPrice = itemView.findViewById(R.id.tv_product_price);
-//        ImageView ivDelete = itemView.findViewById(R.id.iv_delete);
+        //        ImageView ivDelete = itemView.findViewById(R.id.iv_delete);
 //        ImageView ivEdit = itemView.findViewById(R.id.iv_edit);
         ImageView ivProduct = itemView.findViewById(R.id.iv_product);
     }

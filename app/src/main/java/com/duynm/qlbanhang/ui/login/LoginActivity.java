@@ -1,4 +1,4 @@
-package com.duynm.qlbanhang.ui.Login;
+package com.duynm.qlbanhang.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 

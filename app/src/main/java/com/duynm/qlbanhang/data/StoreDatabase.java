@@ -25,6 +25,15 @@ public class StoreDatabase extends SQLiteOpenHelper {
                 "image BLOB," +
                 "price DOUBLE NOT NULL," +
                 "type TEXT)");
+
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS orders (" +
+                "id INTEGER PRIMARY KEY NOT NULL," +
+                "customer TEXT NOT NULL," +
+                "address TEXT NOT NULL," +
+                "phone TEXT NOT NULL," +
+                "list_product TEXT NOT NULL," +
+                "status INTEGER NOT NULL," +
+                "date LONG NOT NULL)");
     }
 
     @Override
