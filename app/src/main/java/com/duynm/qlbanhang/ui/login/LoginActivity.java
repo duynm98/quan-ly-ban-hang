@@ -17,7 +17,7 @@ import com.duynm.qlbanhang.ui.home.MainActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final static String DEFAULT_USERNAME = "duylongduong";
+    private final static String DEFAULT_USERNAME = "huanhoahong";
     private final static String DEFAULT_PASSWORD = "123456";
 
     private TextView txtSignUp;
