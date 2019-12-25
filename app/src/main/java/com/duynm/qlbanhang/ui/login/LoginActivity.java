@@ -17,12 +17,13 @@ import com.duynm.qlbanhang.ui.home.MainActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final static String DEFAULT_USERNAME = "admin";
-    private final static String DEFAULT_PASSWORD = "admin";
+    private final static String DEFAULT_USERNAME = "duylongduong";
+    private final static String DEFAULT_PASSWORD = "123456";
 
     private TextView txtSignUp;
     private EditText txtAccount, txtPassword;
     private Button btnLogin;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +60,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnLogin:
-                startActivity(new Intent(this, MainActivity.class));
-                break;
+                if (isCorrectAcount()){
+                    startActivity(new Intent(this, MainActivity.class));
+                    break;
+                }else {
+                    Toast.makeText(this,"Sai thông tin đăng nhập",Toast.LENGTH_LONG).show();
+                    break;
+                }
+
             case R.id.txtSignUp:
                 Toast.makeText(this, "Chưa có chức năng đăng ký", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    private boolean isCorrectAcount(){
+        return (txtAccount.getText().toString().equals(DEFAULT_USERNAME)&& txtPassword.getText().toString().equals(DEFAULT_PASSWORD));
+
     }
 }

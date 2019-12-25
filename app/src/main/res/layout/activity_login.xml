@@ -54,7 +54,8 @@
             android:hint="Mật khẩu"
             android:textColor="@color/mColorWhite"
             android:textColorHint="@color/mColorWhite"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:inputType="textPassword"/>
 
         <Button
             android:id="@+id/btnLogin"
