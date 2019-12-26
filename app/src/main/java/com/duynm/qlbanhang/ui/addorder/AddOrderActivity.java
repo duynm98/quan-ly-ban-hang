@@ -2,7 +2,6 @@ package com.duynm.qlbanhang.ui.addorder;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,14 +12,13 @@ import android.widget.Toast;
 
 import com.duynm.qlbanhang.R;
 import com.duynm.qlbanhang.adapter.DetailOrderAdapter;
-import com.duynm.qlbanhang.adapter.ProductAdapter;
 import com.duynm.qlbanhang.base.BaseActivity;
 import com.duynm.qlbanhang.data.order.Order;
 import com.duynm.qlbanhang.data.order.OrderController;
 import com.duynm.qlbanhang.data.order.OrderDetail;
 import com.duynm.qlbanhang.data.product.Product;
 import com.duynm.qlbanhang.dialog.PickProductDialogFragment;
-import com.duynm.qlbanhang.utils.OnItemClickListener;
+import com.duynm.qlbanhang.utils.listener.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;

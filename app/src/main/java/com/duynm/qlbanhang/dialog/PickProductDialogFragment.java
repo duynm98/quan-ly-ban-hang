@@ -15,7 +15,7 @@ import com.duynm.qlbanhang.adapter.ProductAdapter;
 import com.duynm.qlbanhang.data.product.Product;
 import com.duynm.qlbanhang.data.product.ProductController;
 import com.duynm.qlbanhang.data.product.ProductNavigator;
-import com.duynm.qlbanhang.utils.OnItemClickListener;
+import com.duynm.qlbanhang.utils.listener.OnItemClickListener;
 
 import java.util.ArrayList;
 
