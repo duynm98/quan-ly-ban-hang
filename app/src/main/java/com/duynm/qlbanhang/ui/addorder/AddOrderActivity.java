@@ -2,21 +2,30 @@ package com.duynm.qlbanhang.ui.addorder;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.duynm.qlbanhang.R;
 import com.duynm.qlbanhang.adapter.DetailOrderAdapter;
+import com.duynm.qlbanhang.adapter.ProductAdapter;
 import com.duynm.qlbanhang.base.BaseActivity;
 import com.duynm.qlbanhang.data.order.Order;
 import com.duynm.qlbanhang.data.order.OrderController;
 import com.duynm.qlbanhang.data.order.OrderDetail;
 import com.duynm.qlbanhang.data.product.Product;
+import com.duynm.qlbanhang.data.product.ProductController;
+import com.duynm.qlbanhang.data.product.ProductNavigator;
 import com.duynm.qlbanhang.dialog.PickProductDialogFragment;
 import com.duynm.qlbanhang.utils.listener.OnItemClickListener;
 
@@ -71,17 +80,73 @@ public class AddOrderActivity extends BaseActivity implements View.OnClickListen
     }
 
     private void showPickProductDialog() {
-        final PickProductDialogFragment dialogFragment = new PickProductDialogFragment();
-        dialogFragment.setOnItemClickListener(new OnItemClickListener<Product>() {
+//        final PickProductDialogFragment dialogFragment = new PickProductDialogFragment();
+//        dialogFragment.setOnItemClickListener(new OnItemClickListener<Product>() {
+//            @Override
+//            public void onItemClick(Product item) {
+//                DetailOrderAdapter detailOrderAdapter = (DetailOrderAdapter) rvOrderProducts.getAdapter();
+//                if (detailOrderAdapter != null) detailOrderAdapter.addProduct(item);
+//                dialogFragment.dismiss();
+//            }
+//        });
+//
+//        dialogFragment.show(getSupportFragmentManager(), dialogFragment.getTag());
+
+    }
+
+    private void displayFilterDialog() {
+
+        LayoutInflater layoutInflater = getLayoutInflater();
+        View dialogLayout = layoutInflater.inflate(R.layout.dialog_add_order_product, null);
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        final AlertDialog alertDialog = alertDialogBuilder
+                .setView(dialogLayout)
+                .setCancelable(false)
+                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .show();
+
+        final RecyclerView rvAddProduct = dialogLayout.findViewById(R.id.rv_add_product);
+
+        ProductController productController = new ProductController(this, new ProductNavigator() {
+            @Override
+            public void displayProducts(ArrayList<Product> products) {
+                ProductAdapter productAdapter = (ProductAdapter) rvAddProduct.getAdapter();
+                if (productAdapter != null) productAdapter.replaceData(products);
+            }
+        });
+
+        ProductAdapter productAdapter = new ProductAdapter(this, new ArrayList<Product>(), productController);
+        productAdapter.setOnItemClickListener(new OnItemClickListener<Product>() {
             @Override
             public void onItemClick(Product item) {
                 DetailOrderAdapter detailOrderAdapter = (DetailOrderAdapter) rvOrderProducts.getAdapter();
                 if (detailOrderAdapter != null) detailOrderAdapter.addProduct(item);
-                dialogFragment.dismiss();
+                alertDialog.dismiss();
             }
         });
 
-        dialogFragment.show(getSupportFragmentManager(), dialogFragment.getTag());
+        rvAddProduct.setAdapter(productAdapter);
+
+        productController.getAllProducts();
+
+//        new AlertDialog.Builder(this)
+//                .setTitle(getString(R.string.filter))
+//                .setView(dialogLayout)
+//                .setCancelable(false)
+//                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dialogInterface.dismiss();
+//                    }
+//                })
+//                .create()
+//                .show();
     }
 
     private void createNewOrder() {
@@ -121,7 +186,7 @@ public class AddOrderActivity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.iv_add_product:
             case R.id.tv_add_product:
-                showPickProductDialog();
+                displayFilterDialog();
                 break;
             case R.id.btn_create_order:
                 createNewOrder();
