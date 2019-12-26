@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.duynm.qlbanhang.R;
 import com.duynm.qlbanhang.base.BaseFragment;
+import com.duynm.qlbanhang.ui.configstore.ConfigStoreActivity;
 import com.duynm.qlbanhang.ui.login.LoginActivity;
 
 /**
@@ -13,7 +14,7 @@ import com.duynm.qlbanhang.ui.login.LoginActivity;
  */
 public class MoreFragment extends BaseFragment {
 
-    private TextView tvLogout;
+    private TextView tvLogout, tvConfigStore;
 
     @Override
     protected int getLayoutResource() {
@@ -23,11 +24,18 @@ public class MoreFragment extends BaseFragment {
     @Override
     protected void initUI() {
         tvLogout = getView().findViewById(R.id.tv_log_out);
+        tvConfigStore = getView().findViewById(R.id.tv_config_store);
 
         tvLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), LoginActivity.class));
+            }
+        });
+        tvConfigStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), ConfigStoreActivity.class));
             }
         });
     }

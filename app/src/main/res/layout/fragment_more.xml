@@ -7,12 +7,25 @@
     android:padding="8dp">
 
     <TextView
+        android:id="@+id/tv_config_store"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/mColorWhite"
+        android:padding="12dp"
+        android:text="@string/config_store"
+        android:textColor="@color/mColorBlack"
+        android:textSize="18sp" />
+
+    <TextView
         android:id="@+id/tv_log_out"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/mColorWhite"
         android:padding="12dp"
         android:text="@string/log_out"
-        android:textSize="21sp" />
+        android:textColor="@color/mColorBlack"
+        android:textSize="18sp" />
 
 </LinearLayout>

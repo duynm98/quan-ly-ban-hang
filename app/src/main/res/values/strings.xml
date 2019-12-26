@@ -41,6 +41,8 @@
     <string name="store_name">Tên cửa hàng</string>
     <string name="phone_number">Số điện thoại</string>
     <string name="address">Địa chỉ</string>
+    <string name="config_store">Cấu hình cửa hàng</string>
+    <string name="save_store_info">Lưu thông tin cửa hàng</string>
 
     <string-array name="sort_type">
         <item>Tên A->Z</item>

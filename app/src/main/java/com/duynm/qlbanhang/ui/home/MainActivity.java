@@ -71,6 +71,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
         vpMain.setOffscreenPageLimit(pagerAdapter.getCount());
         vpMain.setCurrentItem(0);
 
+        toolbarTitle.setText(getString(R.string.overview));
+
         vpMain.addOnPageChangeListener(this);
     }
 
