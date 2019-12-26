@@ -146,11 +146,13 @@ public class ProductController {
 
     private ArrayList<Product> selectProductsByQuery(String query) {
         String filterType = "";
+        String prefigType = query.contains("WHERE") ? " AND" : " WHERE";
         if (type != null && !type.isEmpty())
-            filterType = " WHERE type LIKE '" + type + "'";
+            filterType = prefigType + " type LIKE '" + type + "'";
 
+        Log.d("__PRODUCT", "filterType = " + filterType);
         String filterPrice = "";
-        String prefig = filterType.isEmpty() ? " WHERE" : " AND";
+        String prefigPrice = (query + filterType).contains("WHERE") ? " AND" : " WHERE";
         if (minPrice > 0 && maxPrice < MAX_PRICE) {
             filterPrice = " price BETWEEN " + minPrice + " AND " + maxPrice;
         } else if (minPrice < 0) {
@@ -158,7 +160,7 @@ public class ProductController {
         } else if (maxPrice >= MAX_PRICE) {
             filterPrice = " price > " + minPrice;
         }
-        if (!filterPrice.isEmpty()) filterPrice = prefig + filterPrice;
+        if (!filterPrice.isEmpty()) filterPrice = prefigPrice + filterPrice;
 
         String filterSortType = "";
         switch (sortType) {
