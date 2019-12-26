@@ -38,6 +38,9 @@
     <string name="add_phone_number">Thêm số điện thoại</string>
     <string name="add_address">Thêm địa chỉ</string>
     <string name="log_out">Đăng xuất</string>
+    <string name="store_name">Tên cửa hàng</string>
+    <string name="phone_number">Số điện thoại</string>
+    <string name="address">Địa chỉ</string>
 
     <string-array name="sort_type">
         <item>Tên A->Z</item>
