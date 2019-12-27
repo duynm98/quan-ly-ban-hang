@@ -1,6 +1,7 @@
 package com.duynm.qlbanhang.ui.home.overview;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -51,6 +52,7 @@ public class OverviewFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     protected void initUI() {
+
         preferenceHelper = new PreferenceHelper(getContext(), PrefKeys.PREF_NAME);
 
         storeName = preferenceHelper.getStoreName();
@@ -82,6 +84,14 @@ public class OverviewFragment extends BaseFragment implements View.OnClickListen
             ivStoreAddress.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_mail));
             tvStoreAddress.setText(storeAddress);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (preferenceHelper != null)
+            initUI();
     }
 
     @Override
