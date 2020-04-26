@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private TextView txtSignUp;
     private EditText txtAccount, txtPassword;
-    private Button btnLogin;
 
 
     @Override
@@ -40,17 +39,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initViewComponent() {
-        txtSignUp = (TextView) findViewById(R.id.txtSignUp);
+        txtSignUp = findViewById(R.id.txtSignUp);
         txtAccount = findViewById(R.id.txtAcount);
         txtPassword = findViewById(R.id.txtPassword);
-        btnLogin = findViewById(R.id.btnLogin);
+        Button btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(this);
         txtSignUp.setOnClickListener(this);
     }
 
     private void addLineForSignUp() {
-        String mystring = "Đăng kí";
+        String mystring = getString(R.string.sign_up);
         SpannableString content = new SpannableString(mystring);
         content.setSpan(new UnderlineSpan(), 0, mystring.length(), 0);
         txtSignUp.setText(content);
@@ -64,12 +63,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     startActivity(new Intent(this, MainActivity.class));
                     break;
                 }else {
-                    Toast.makeText(this,"Sai thông tin đăng nhập",Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,getString(R.string.login_failed),Toast.LENGTH_LONG).show();
                     break;
                 }
 
             case R.id.txtSignUp:
-                Toast.makeText(this, "Chưa có chức năng đăng ký", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.sign_in_not_available), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

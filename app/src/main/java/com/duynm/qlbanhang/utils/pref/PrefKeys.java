@@ -7,7 +7,7 @@ public class PrefKeys {
 
     public final static String PREF_NAME = "PREF_NAME_QLBH";
 
-    public final static String STORE_NAME = "StoreName";
-    public final static String STORE_PHONE = "StorePhone";
-    public final static String STORE_ADDRESS = "StoreAddress";
+    final static String STORE_NAME = "StoreName";
+    final static String STORE_PHONE = "StorePhone";
+    final static String STORE_ADDRESS = "StoreAddress";
 }
